@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import './App.scss'
 
 function App() {
   const [city, setCity] = useState('Paris')
   const [weatherInfo, setWeatherInfo] = useState(null)
-  const [isError, setIsError] = useState(false)
+  const [error, setError] = useState<unknown>(null)
   const [videoSource, setVideoSource] = useState('')
 
   function setVideoBackground(weatherCondition: string) {
@@ -40,7 +40,26 @@ function App() {
     }
   }
 
-  async function getWeather() {}
+  const getWeather = useCallback (async() => {
+    try {
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${import.meta.env.VITE_API_KEY}`);
+      const data = await response.json();
+      setWeatherInfo(() =>  data)
+  
+  
+      setVideoBackground(data.weather[0].main);
+    } catch (err: unknown) {
+      setError(() => err)
+    }
+  }, [city])
+
+  useEffect(() => {
+    getWeather()
+  }, [getWeather])
+
+  useEffect(() => {
+    console.log(weatherInfo)
+  }, [weatherInfo])
 
   return <div className='page'></div>
 }
