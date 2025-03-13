@@ -101,6 +101,7 @@ function App() {
                   <div className='city-inner'>
                     <input
                       type='text'
+                      value={city}
                       className='search'
                       onKeyUp={handleKeyUp}
                     />
