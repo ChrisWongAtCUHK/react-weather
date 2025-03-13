@@ -40,14 +40,17 @@ function App() {
     }
   }
 
-  const getWeather = useCallback (async() => {
+  const getWeather = useCallback(async () => {
     try {
-      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${import.meta.env.VITE_API_KEY}`);
-      const data = await response.json();
-      setWeatherInfo(() =>  data)
-  
-  
-      setVideoBackground(data.weather[0].main);
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${
+          import.meta.env.VITE_API_KEY
+        }`
+      )
+      const data = await response.json()
+      setWeatherInfo(() => data)
+
+      setVideoBackground(data.weather[0].main)
     } catch (err: unknown) {
       setError(() => err)
     }
@@ -57,11 +60,18 @@ function App() {
     getWeather()
   }, [getWeather])
 
-  useEffect(() => {
-    console.log(weatherInfo)
-  }, [weatherInfo])
-
-  return <div className='page'></div>
+  return (
+    <div className='page'>
+      <video
+        src={videoSource}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className='video-background'
+      ></video>
+    </div>
+  )
 }
 
 export default App
