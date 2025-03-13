@@ -2,12 +2,15 @@ import { KeyboardEvent, useCallback, useEffect, useState } from 'react'
 
 import './App.scss'
 import WeatherSummary from './components/WeatherSummary'
+import { capitalizeFirstLetter } from './utils'
 
 function App() {
   const [city, setCity] = useState('Paris')
   const [weatherInfo, setWeatherInfo] = useState(null)
   const [error, setError] = useState<unknown>(null)
-  const [videoSource, setVideoSource] = useState<string>('./videos/clear sky.mp4')
+  const [videoSource, setVideoSource] = useState<string>(
+    './videos/clear sky.mp4'
+  )
 
   function setVideoBackground(weatherCondition: string) {
     weatherCondition = weatherCondition.toLowerCase()
@@ -71,7 +74,7 @@ function App() {
   useEffect(() => {
     console.log(weatherInfo)
   }, [weatherInfo])
-  
+
   return (
     <div className='page'>
       <video
@@ -101,7 +104,20 @@ function App() {
                       onKeyUp={handleKeyUp}
                     />
                   </div>
-                  <WeatherSummary weatherInfo={weatherInfo}/>
+                  <WeatherSummary weatherInfo={weatherInfo} />
+                  {error ? (
+                    <div className='error'>
+                      <div className='error-title'>
+                        Oops! Something went wrong
+                      </div>
+                      <div
+                        v-if='weatherInfo?.message'
+                        className='error-message'
+                      >
+                        {capitalizeFirstLetter(weatherInfo?.message)}
+                      </div>
+                    </div>
+                  ) : null}
                 </div>
               </section>
             </div>
