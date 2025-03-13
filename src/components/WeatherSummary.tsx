@@ -19,6 +19,14 @@ function WeatherSummary({ weatherInfo }) {
       <div className='city text-block'>
         {weatherInfo?.name},{weatherInfo?.sys?.country}
       </div>
+      <div className='date text-block'>
+        {new Date().toLocaleString('en-EN', {
+          weekday: 'short',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        })}
+      </div>
     </div>
   )
 }
