@@ -1,6 +1,7 @@
 import { KeyboardEvent, useCallback, useEffect, useState } from 'react'
 
 import './App.scss'
+import WeatherSummary from './components/WeatherSummary'
 
 function App() {
   const [city, setCity] = useState('Paris')
@@ -100,6 +101,7 @@ function App() {
                       onKeyUp={handleKeyUp}
                     />
                   </div>
+                  <WeatherSummary weatherInfo={weatherInfo}/>
                 </div>
               </section>
             </div>
