@@ -74,7 +74,7 @@
     right: 10px;
     width: 25px;
     height: 25px;
-    background: url("./assets/img/search.svg") no-repeat 50% 50%;
+    background: url("./public/img/search.svg") no-repeat 50% 50%;
     background-size: contain;
     transform: translateY(50%);
     cursor: pointer;
@@ -84,7 +84,7 @@
 .info {
   height: 100%;
   padding: 16px;
-  background: url("./assets/img/gradient-1.jpg") no-repeat 50% 50%;
+  background: url("./public/img/gradient-1.jpg") no-repeat 50% 50%;
   background-size: cover;
   border-radius: 25px;
 }
