@@ -3,6 +3,7 @@ import { KeyboardEvent, useCallback, useEffect, useState } from 'react'
 import './App.scss'
 import WeatherSummary from './components/WeatherSummary'
 import { capitalizeFirstLetter } from './utils'
+import Highlights from './components/Highlights'
 
 function App() {
   const [city, setCity] = useState('Paris')
@@ -120,6 +121,11 @@ function App() {
                   ) : null}
                 </div>
               </section>
+              {!error ? (
+                <section className='section section-right'>
+                  <Highlights weatherInfo={weatherInfo} />
+                </section>
+              ) : null}
             </div>
           </div>
         </div>
