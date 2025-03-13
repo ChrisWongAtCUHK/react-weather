@@ -1,35 +1,48 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
+import './App.scss'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [city, setCity] = useState('Paris')
+  const [weatherInfo, setWeatherInfo] = useState(null)
+  const [isError, setIsError] = useState(false)
+  const [videoSource, setVideoSource] = useState('')
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  function setVideoBackground(weatherCondition: string) {
+    weatherCondition = weatherCondition.toLowerCase()
+
+    if (weatherCondition === 'clear') {
+      setVideoSource(() => './videos/clear sky.mp4')
+    } else if (weatherCondition === 'clouds') {
+      setVideoSource(() => './videos/clouds.mp4')
+    } else if (weatherCondition === 'rain') {
+      setVideoSource(() => './videos/rain.mp4')
+    } else if (weatherCondition === 'snow') {
+      setVideoSource(() => './videos/snow.mp4')
+    } else if (
+      weatherCondition === 'mist' ||
+      weatherCondition === 'smoke' ||
+      weatherCondition === 'haze' ||
+      weatherCondition === 'dust' ||
+      weatherCondition === 'fog' ||
+      weatherCondition === 'sand' ||
+      weatherCondition === 'ash' ||
+      weatherCondition === 'squall' ||
+      weatherCondition === 'tornado'
+    ) {
+      setVideoSource(() => './videos/trees.mp4')
+    } else if (weatherCondition === 'thunderstorm') {
+      setVideoSource(() => './videos/thunderstorm.mp4')
+    } else if (weatherCondition === 'drizzle') {
+      setVideoSource(() => './videos/drizzle.mp4')
+    } else {
+      setVideoSource(() => './videos/sky.mp4')
+    }
+  }
+
+  async function getWeather() {}
+
+  return <div className='page'></div>
 }
 
 export default App
