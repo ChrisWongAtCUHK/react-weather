@@ -52,3 +52,6 @@ export default tseslint.config({
   },
 })
 ```
+
+# Origin
+https://vuejsexamples.com/weather-app-built-with-vue-js-3/
