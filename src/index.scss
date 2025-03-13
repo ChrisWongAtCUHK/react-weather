@@ -38,7 +38,7 @@ a {
   height: 100%;
   // margin-left: 10px;
   padding: 28px 16px 16px;
-  background: url("/public/assets/img/gradient-1.jpg") no-repeat 0% 0%;
+  background: url("/public/img/gradient-1.jpg") no-repeat 0% 0%;
   background-size: cover;
   border-radius: 25px;
 
@@ -94,9 +94,9 @@ a {
 }
 
 .pic-humidity {
-  background-image: url("/public/assets/img/humidity.png");
+  background-image: url("/public/img/humidity.png");
 }
 
 .pic-coords {
-  background-image: url("/public/assets/img/compass.png");
+  background-image: url("/public/img/compass.png");
 }
