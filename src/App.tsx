@@ -71,7 +71,6 @@ function App() {
   function handleKeyUp(e: KeyboardEvent<HTMLInputElement>) {
     if (e.key === 'Enter') {
       getWeather(city)
-      
     }
   }
   useEffect(() => {
@@ -109,7 +108,7 @@ function App() {
                       onKeyUp={handleKeyUp}
                     />
                   </div>
-                  <WeatherSummary weatherInfo={weatherInfo} />
+                  {!error ? <WeatherSummary weatherInfo={weatherInfo} /> : null}
                   {error ? (
                     <div className='error'>
                       <div className='error-title'>
@@ -131,10 +130,12 @@ function App() {
                 </section>
               ) : null}
             </div>
-            {!error ? <div className='sections'>
-              <Coords coord={weatherInfo?.coord} />
-              <Humidity humidity={weatherInfo?.main.humidity} />
-            </div> : null}
+            {!error ? (
+              <div className='sections'>
+                <Coords coord={weatherInfo?.coord} />
+                <Humidity humidity={weatherInfo?.main.humidity} />
+              </div>
+            ) : null}
           </div>
         </div>
       </main>
