@@ -1,6 +1,8 @@
-import React from 'react'
+type HumidityProps = {
+  humidity: number | undefined
+}
 
-function Humidity({ humidity }) {
+function Humidity({ humidity }: HumidityProps) {
   return (
     <section className='section-bottom'>
       <div className='block-bottom'>

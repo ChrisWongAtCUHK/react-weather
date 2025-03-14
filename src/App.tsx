@@ -1,15 +1,16 @@
 import { KeyboardEvent, useCallback, useEffect, useState } from 'react'
 
 import './App.scss'
-import WeatherSummary from './components/WeatherSummary'
+import { WeatherInfo } from './types'
 import { capitalizeFirstLetter } from './utils'
+import WeatherSummary from './components/WeatherSummary'
 import Highlights from './components/Highlights'
 import Coords from './components/Coords'
 import Humidity from './components/Humidity'
 
 function App() {
   const [city, setCity] = useState('Paris')
-  const [weatherInfo, setWeatherInfo] = useState(null)
+  const [weatherInfo, setWeatherInfo] = useState<WeatherInfo>()
   const [error, setError] = useState<unknown>(null)
   const [videoSource, setVideoSource] = useState<string>(
     './videos/clear sky.mp4'
@@ -122,7 +123,7 @@ function App() {
                         v-if='weatherInfo?.message'
                         className='error-message'
                       >
-                        {capitalizeFirstLetter(weatherInfo?.message)}
+                        {capitalizeFirstLetter(weatherInfo?.message || '')}
                       </div>
                     </div>
                   ) : null}

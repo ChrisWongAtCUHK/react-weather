@@ -1,7 +1,12 @@
 import { capitalizeFirstLetter } from '../utils'
+import { WeatherInfo } from '../types'
 import './WeatherSummary.scss'
 
-function WeatherSummary({ weatherInfo }) {
+type WeatherSummaryProps = {
+  weatherInfo: WeatherInfo | undefined
+}
+
+function WeatherSummary({ weatherInfo }: WeatherSummaryProps) {
   return (
     <div className='summary'>
       <div
@@ -11,9 +16,9 @@ function WeatherSummary({ weatherInfo }) {
         className='pic-main'
       ></div>
       <div className='weather'>
-        <div className='temp'>{Math.round(weatherInfo?.main?.temp)} °C</div>
+        <div className='temp'>{Math.round(weatherInfo?.main?.temp || 0)} °C</div>
         <div className='weather-desc text-block'>
-          {capitalizeFirstLetter(weatherInfo?.weather[0].description)}
+          {capitalizeFirstLetter(weatherInfo?.weather[0].description || '')}
         </div>
       </div>
       <div className='city text-block'>

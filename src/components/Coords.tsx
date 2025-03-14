@@ -1,4 +1,10 @@
-function Coords({ coord }) {
+import { Coord } from '../types'
+
+type CoordsProps = {
+  coord: Coord | undefined
+}
+
+function Coords({ coord }: CoordsProps) {
   return (
     <section className='section-bottom right'>
       <div className='block-bottom'>

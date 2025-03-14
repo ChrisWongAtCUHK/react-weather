@@ -1,7 +1,11 @@
 import { getPressureMm, getTime } from '../utils'
+import { WeatherInfo } from '../types'
 import './Highlights.scss'
 
-function Highlights({ weatherInfo }) {
+type HighlightsProps = {
+  weatherInfo: WeatherInfo | undefined
+}
+function Highlights({ weatherInfo }: HighlightsProps) {
   return (
     <div className='section highlights'>
       <div className='title'>Today's Highlights</div>
@@ -30,7 +34,7 @@ function Highlights({ weatherInfo }) {
             <div className='card-small-info'>
               <div v-if='weatherInfo?.wind?.gust' className='card-small-data'>
                 <div className='info-main-num'>
-                  {Math.round(weatherInfo?.wind?.gust)}
+                  {Math.round(weatherInfo?.wind?.gust || 0)}
                 </div>
                 <div className='info-main-text'>m/s</div>
               </div>
@@ -58,7 +62,7 @@ function Highlights({ weatherInfo }) {
               <div className='card-centered'>
                 <div className='info-main'>
                   <div className='info-main-num'>
-                    {getPressureMm(weatherInfo?.main?.pressure)}
+                    {getPressureMm(weatherInfo?.main?.pressure || 0)}
                   </div>
                   <div className='info-main-text'>mm</div>
                 </div>
@@ -70,7 +74,7 @@ function Highlights({ weatherInfo }) {
             <div className='card-small-info'>
               <div className='card-small-data'>
                 <div className='info-main-num'>
-                  {Math.round(weatherInfo?.main?.feels_like)}
+                  {Math.round(weatherInfo?.main?.feels_like || 0)}
                 </div>
                 <div className='info-main-text'>°C</div>
               </div>
@@ -93,14 +97,14 @@ function Highlights({ weatherInfo }) {
                   <div className='state-pic'></div>
                   <div className='state-title'>Sunrise</div>
                   <div className='state-time'>
-                    {getTime(weatherInfo?.sys?.sunrise + weatherInfo?.timezone)}
+                    {getTime(weatherInfo?.sys?.sunrise || 0 + weatherInfo?.timezone || 0)}
                   </div>
                 </div>
                 <div className='state'>
                   <div className='state-pic state-pic--flipped'></div>
                   <div className='state-title'>Sunset</div>
                   <div className='state-time'>
-                    {getTime(weatherInfo?.sys?.sunset + weatherInfo?.timezone)}
+                    {getTime(weatherInfo?.sys?.sunset || 0 + weatherInfo?.timezone || 0)}
                   </div>
                 </div>
               </div>
