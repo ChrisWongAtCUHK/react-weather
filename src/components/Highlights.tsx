@@ -1,4 +1,4 @@
-import { getPressureMm } from '../utils'
+import { getPressureMm, getTime } from '../utils'
 import './Highlights.scss'
 
 function Highlights({ weatherInfo }) {
@@ -82,6 +82,36 @@ function Highlights({ weatherInfo }) {
               </div>
             </div>
           </div>
+        </div>
+        <div className="highlight">
+        <div className="card">
+                    <div className="card-title">
+                        Sunrise and sunset
+                    </div>
+                    <div className="card-pic card-pic--sun"></div>
+                    <div className="card-info">
+                        <div className="states">
+                            <div className="state">
+                                <div className="state-pic"></div>
+                                <div className="state-title">
+                                    Sunrise
+                                </div>
+                                <div className="state-time">
+                                    { getTime(weatherInfo?.sys?.sunrise + weatherInfo?.timezone) }
+                                </div>
+                            </div>
+                            <div className="state">
+                                <div className="state-pic state-pic--flipped"></div>
+                                <div className="state-title">
+                                    Sunset
+                                </div>
+                                <div className="state-time">
+                                { getTime(weatherInfo?.sys?.sunset + weatherInfo?.timezone) }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
       </div>
     </div>
