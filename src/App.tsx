@@ -5,6 +5,7 @@ import WeatherSummary from './components/WeatherSummary'
 import { capitalizeFirstLetter } from './utils'
 import Highlights from './components/Highlights'
 import Coords from './components/Coords'
+import Humidity from './components/Humidity'
 
 function App() {
   const [city, setCity] = useState('Paris')
@@ -131,6 +132,7 @@ function App() {
             </div>
             {!error ? <div className='sections'>
               <Coords coord={weatherInfo?.coord} />
+              <Humidity humidity={weatherInfo?.main.humidity} />
             </div> : null}
           </div>
         </div>
