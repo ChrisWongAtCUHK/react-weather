@@ -65,6 +65,23 @@ function Highlights({ weatherInfo }) {
               </div>
             </div>
           </div>
+          <div className='card-small'>
+            <div className='card-small-title'>Feels like</div>
+            <div className='card-small-info'>
+              <div className='card-small-data'>
+                <div className='info-main-num'>
+                  {Math.round(weatherInfo?.main?.feels_like)}
+                </div>
+                <div className='info-main-text'>°C</div>
+              </div>
+              <div className='card-small-hint'>
+                <div className='card-small-pic card-small-pic--margin card-small-pic--pressure'></div>
+                <div className='card-small-text'>
+                  How hot or cold it really feels
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
