@@ -83,35 +83,44 @@ function Highlights({ weatherInfo }) {
             </div>
           </div>
         </div>
-        <div className="highlight">
-        <div className="card">
-                    <div className="card-title">
-                        Sunrise and sunset
-                    </div>
-                    <div className="card-pic card-pic--sun"></div>
-                    <div className="card-info">
-                        <div className="states">
-                            <div className="state">
-                                <div className="state-pic"></div>
-                                <div className="state-title">
-                                    Sunrise
-                                </div>
-                                <div className="state-time">
-                                    { getTime(weatherInfo?.sys?.sunrise + weatherInfo?.timezone) }
-                                </div>
-                            </div>
-                            <div className="state">
-                                <div className="state-pic state-pic--flipped"></div>
-                                <div className="state-title">
-                                    Sunset
-                                </div>
-                                <div className="state-time">
-                                { getTime(weatherInfo?.sys?.sunset + weatherInfo?.timezone) }
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <div className='highlight'>
+          <div className='card'>
+            <div className='card-title'>Sunrise and sunset</div>
+            <div className='card-pic card-pic--sun'></div>
+            <div className='card-info'>
+              <div className='states'>
+                <div className='state'>
+                  <div className='state-pic'></div>
+                  <div className='state-title'>Sunrise</div>
+                  <div className='state-time'>
+                    {getTime(weatherInfo?.sys?.sunrise + weatherInfo?.timezone)}
+                  </div>
                 </div>
+                <div className='state'>
+                  <div className='state-pic state-pic--flipped'></div>
+                  <div className='state-title'>Sunset</div>
+                  <div className='state-time'>
+                    {getTime(weatherInfo?.sys?.sunset + weatherInfo?.timezone)}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='card-small'>
+            <div className='card-small-title'>Cloudiness</div>
+            <div className='card-small-info'>
+              <div className='card-small-data'>
+                <div className='info-main-num'>{weatherInfo?.clouds?.all}</div>
+                <div className='info-main-text'>%</div>
+              </div>
+              <div className='card-small-hint'>
+                <div className='card-small-pic card-small-pic--sun'></div>
+                <div className='card-small-text'>
+                  The sky fraction obscured by clouds
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
