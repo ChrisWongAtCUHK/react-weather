@@ -4,6 +4,7 @@ import './App.scss'
 import WeatherSummary from './components/WeatherSummary'
 import { capitalizeFirstLetter } from './utils'
 import Highlights from './components/Highlights'
+import Coords from './components/Coords'
 
 function App() {
   const [city, setCity] = useState('Paris')
@@ -128,6 +129,9 @@ function App() {
                 </section>
               ) : null}
             </div>
+            {!error ? <div className='sections'>
+              <Coords coord={weatherInfo?.coord} />
+            </div> : null}
           </div>
         </div>
       </main>
