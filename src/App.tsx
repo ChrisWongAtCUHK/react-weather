@@ -63,11 +63,14 @@ function App() {
     }
   }, [])
 
+  function handleChange(e: { target: { value: string } }) {
+    setCity(() => e.target.value)
+  }
+
   function handleKeyUp(e: KeyboardEvent<HTMLInputElement>) {
     if (e.key === 'Enter') {
-      const c = (e.target as HTMLInputElement).value
-      getWeather(c)
-      setCity(() => c)
+      getWeather(city)
+      
     }
   }
   useEffect(() => {
@@ -105,6 +108,7 @@ function App() {
                       type='text'
                       value={city}
                       className='search'
+                      onChange={handleChange}
                       onKeyUp={handleKeyUp}
                     />
                   </div>
