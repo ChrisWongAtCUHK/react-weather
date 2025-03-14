@@ -78,10 +78,6 @@ function App() {
     getWeather()
   }, [getWeather])
 
-  useEffect(() => {
-    console.log(weatherInfo)
-  }, [weatherInfo])
-
   return (
     <div className='page'>
       <video

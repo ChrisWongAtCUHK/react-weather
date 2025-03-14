@@ -97,14 +97,14 @@ function Highlights({ weatherInfo }: HighlightsProps) {
                   <div className='state-pic'></div>
                   <div className='state-title'>Sunrise</div>
                   <div className='state-time'>
-                    {getTime(weatherInfo?.sys?.sunrise || 0 + weatherInfo?.timezone || 0)}
+                    {getTime(weatherInfo?.sys?.sunrise || 0 + (weatherInfo ? weatherInfo.timezone : 0))}
                   </div>
                 </div>
                 <div className='state'>
                   <div className='state-pic state-pic--flipped'></div>
                   <div className='state-title'>Sunset</div>
                   <div className='state-time'>
-                    {getTime(weatherInfo?.sys?.sunset || 0 + weatherInfo?.timezone || 0)}
+                    {getTime(weatherInfo?.sys?.sunset || 0 + (weatherInfo ? weatherInfo.timezone : 0))}
                   </div>
                 </div>
               </div>
