@@ -1,3 +1,4 @@
+import { getPressureMm } from '../utils'
 import './Highlights.scss'
 
 function Highlights({ weatherInfo }) {
@@ -44,6 +45,22 @@ function Highlights({ weatherInfo }) {
                     more
                   </a>
                   &nbsp;about gusts
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className='highlight'>
+          <div className='card'>
+            <div className='card-title'>Pressure</div>
+            <div className='card-pic card-pic--pressure'></div>
+            <div className='card-info'>
+              <div className='card-centered'>
+                <div className='info-main'>
+                  <div className='info-main-num'>
+                    {getPressureMm(weatherInfo?.main?.pressure)}
+                  </div>
+                  <div className='info-main-text'>mm</div>
                 </div>
               </div>
             </div>
